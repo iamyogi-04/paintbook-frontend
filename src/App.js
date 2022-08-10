@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import Login from './components/Login/Login'
+import { useState} from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Register from './components/Register/Register'
+import Canvas from './components/Canvas/Canvas'
 
-function App() {
+const App = () => {
+  // eslint-disable-next-line
+  const [student,setStudent]=useState("")
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+    
+      <BrowserRouter>
+        
+          <Routes>
+            <Route path="/" element={<Login setStudent={setStudent}/>} />
+            <Route path="/register" element={<Register  />} />
+            <Route path="/Home" element={<Canvas />} />
+          </Routes>
+      </BrowserRouter>
+    </>
+  )
 }
 
-export default App;
+export default App
